@@ -1,3 +1,5 @@
+using server_app.Models;
+
 namespace server_app.Services;
 
 public interface IKeycloakService
@@ -16,4 +18,9 @@ public interface IKeycloakService
     /// Kiểm tra xem user đã tồn tại hay chưa
     /// </summary>
     Task<bool> UserExistsAsync(string username);
+
+    /// <summary>
+    /// Gọi introspection endpoint của Keycloak để kiểm tra token còn hiệu lực không
+    /// </summary>
+    Task<TokenValidationResponse> ValidateTokenAsync(string token);
 }
